@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{33BF0F4A-D97F-4CEB-BCFB-3529A5254454}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Bestiaire_Witcher</RootNamespace>
+    <AssemblyName>Bestiaire Witcher</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Creation.xaml.cs">
+      <DependentUpon>Creation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MonstreToVisibilityConverter.cs" />
+    <Compile Include="UCContent.xaml.cs">
+      <DependentUpon>UCContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UCFooter.xaml.cs">
+      <DependentUpon>UCFooter.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Creation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EnumDescriptionConverter.cs" />
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="UCContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UCFooter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Assets\fiellon.jpg" />
+    <Resource Include="img\Assets\leshen.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Assets\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Assets\pesta.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bestiaire.Monstres\Bestiaire.Monstres.csproj">
+      <Project>{a8bc1ae7-3fd7-4741-a1a0-7e5ffdd4cdfb}</Project>
+      <Name>Bestiaire.Monstres</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bestiaire.Services\Bestiaire.Services.csproj">
+      <Project>{495CBF7B-67A6-458F-8BC7-A73852F921A4}</Project>
+      <Name>Bestiaire.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Bombes\Dimeritium.png" />
+    <Resource Include="img\Bombes\poudre_de_lune.png" />
+    <Resource Include="img\Bombes\Ruche.png" />
+    <Resource Include="img\Bombes\Vent_du_Nord.png" />
+    <Resource Include="img\Bombes\Vesse-de-loup_du_diable.png" />
+    <Resource Include="img\Huiles\Huile_Betes.png" />
+    <Resource Include="img\Huiles\Huile_Draconides.png" />
+    <Resource Include="img\Huiles\Huile_Elementaires.png" />
+    <Resource Include="img\Huiles\Huile_Hybrides.png" />
+    <Resource Include="img\Huiles\Huile_Maudits.png" />
+    <Resource Include="img\Monstres\Betes\Chien.png" />
+    <Resource Include="img\Monstres\Betes\Loup.png" />
+    <Resource Include="img\Monstres\Betes\Ours.png" />
+    <Resource Include="img\Monstres\Draconides\Basilic.png" />
+    <Resource Include="img\Monstres\Draconides\Cocatrix.png" />
+    <Resource Include="img\Monstres\Draconides\Dragon_Fyresdal.png" />
+    <Resource Include="img\Monstres\Draconides\Foenard.png" />
+    <Resource Include="img\Monstres\Draconides\Hurleur.png" />
+    <Resource Include="img\Monstres\Draconides\Wyvern.png" />
+    <Resource Include="img\Monstres\Draconides\Wyvern_Royale.png" />
+    <Resource Include="img\Monstres\Elementaires\Djinn.png" />
+    <Resource Include="img\Monstres\Elementaires\Elementaire_feu.png" />
+    <Resource Include="img\Monstres\Elementaires\Elementaire_glace.png" />
+    <Resource Include="img\Monstres\Elementaires\Elementaire_Terre.png" />
+    <Resource Include="img\Monstres\Elementaires\Fantome_des_rayons.png" />
+    <Resource Include="img\Monstres\Elementaires\Gargouille.png" />
+    <Resource Include="img\Monstres\Elementaires\Golem.png" />
+    <Resource Include="img\Monstres\Elementaires\Molosse.png" />
+    <Resource Include="img\Monstres\Elementaires\Therazane.png" />
+    <Resource Include="img\Monstres\Hybrides\Erynia.png" />
+    <Resource Include="img\Monstres\Hybrides\Griffon.png" />
+    <Resource Include="img\Monstres\Hybrides\Harpie.png" />
+    <Resource Include="img\Monstres\Hybrides\Melusine.png" />
+    <Resource Include="img\Monstres\Hybrides\Salma.png" />
+    <Resource Include="img\Monstres\Hybrides\Succube.png" />
+    <Resource Include="img\Monstres\Maudits\Berserker.png" />
+    <Resource Include="img\Monstres\Maudits\Couvin.png" />
+    <Resource Include="img\Monstres\Maudits\Loup_Garou.png" />
+    <Resource Include="img\Monstres\Maudits\Ulfhedinn.png" />
+    <Resource Include="img\Signes\Signe_Aard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Monstres\Hybrides\Sirene.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Assets\not_found.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Monstres\Insectoides\Arachas.png" />
+    <Resource Include="img\Monstres\Insectoides\Arachas_cuirasse.png" />
+    <Resource Include="img\Monstres\Insectoides\Arachas_venimeux.png" />
+    <Resource Include="img\Monstres\Insectoides\Bourdon_endriague.png" />
+    <Resource Include="img\Monstres\Insectoides\Endriague_guerriere.png" />
+    <Resource Include="img\Monstres\Insectoides\Endriague_ouvriere.png" />
+    <Resource Include="img\Monstres\Insectoides\Harrisi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Monstres\Necrophages\Abaya.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Monstres\Necrophages\Algoule.png" />
+    <Resource Include="img\Monstres\Necrophages\Brumelin.png" />
+    <Resource Include="img\Monstres\Necrophages\Fourbe-veuve.png" />
+    <Resource Include="img\Monstres\Necrophages\Goule.png" />
+    <Resource Include="img\Monstres\Necrophages\Guenaude_sepulcrale.png" />
+    <Resource Include="img\Monstres\Necrophages\Gueunaude_aquatique.png" />
+    <Resource Include="img\Monstres\Necrophages\Ignis_fatuus.png" />
+    <Resource Include="img\Monstres\Necrophages\Noyeur.png" />
+    <Resource Include="img\Monstres\Necrophages\Putrefacteur.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Potions\Loriot_dore.png" />
+    <Resource Include="img\Potions\Sang_noir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Monstres\Orgoides\Cyclope.png" />
+    <Resource Include="img\Monstres\Orgoides\Geant_glace.png" />
+    <Resource Include="img\Monstres\Orgoides\Hagubman.png" />
+    <Resource Include="img\Monstres\Orgoides\Nekker.png" />
+    <Resource Include="img\Monstres\Orgoides\Tape-tapeur.png" />
+    <Resource Include="img\Monstres\Orgoides\Troll_glace.png" />
+    <Resource Include="img\Monstres\Orgoides\Troll_pierre.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Monstres\Spectres\Bleme.png" />
+    <Resource Include="img\Monstres\Spectres\Dame_blanche.png" />
+    <Resource Include="img\Monstres\Spectres\Dame_des_bois.png" />
+    <Resource Include="img\Monstres\Spectres\Demon_pres_du_puits.png" />
+    <Resource Include="img\Monstres\Spectres\Penitent.png" />
+    <Resource Include="img\Monstres\Spectres\Pesta.png" />
+    <Resource Include="img\Monstres\Spectres\Spectre.png" />
+    <Resource Include="img\Monstres\Spectres\Spectre_de_midi.png" />
+    <Resource Include="img\Monstres\Spectres\Spectre_de_minuit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Monstres\Vampires\Ekimme.png" />
+    <Resource Include="img\Monstres\Vampires\Gael.png" />
+    <Resource Include="img\Monstres\Vampires\Katakan.png" />
+    <Resource Include="img\Monstres\Vampires\Sarasti.png" />
+    <Resource Include="img\Monstres\Vampires\Vampire_supperieur.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Monstres\Vestiges\Celicole.png" />
+    <Resource Include="img\Monstres\Vestiges\Doppler.png" />
+    <Resource Include="img\Monstres\Vestiges\Esprit_de_la_foret.png" />
+    <Resource Include="img\Monstres\Vestiges\Fiellon.png" />
+    <Resource Include="img\Monstres\Vestiges\Hurleur.png" />
+    <Resource Include="img\Monstres\Vestiges\Kernun.png" />
+    <Resource Include="img\Monstres\Vestiges\Leshen.png" />
+    <Resource Include="img\Monstres\Vestiges\Lutin.png" />
+    <Resource Include="img\Monstres\Vestiges\Moire.png" />
+    <Resource Include="img\Monstres\Vestiges\Morvudd.png" />
+    <Resource Include="img\Monstres\Vestiges\Sylvain.png" />
+    <Resource Include="img\Monstres\Vestiges\Tschart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Assets\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Assets\wall.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

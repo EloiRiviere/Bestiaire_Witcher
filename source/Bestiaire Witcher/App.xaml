@@ -1,0 +1,182 @@
+﻿<Application x:Class="Bestiaire_Witcher.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+
+    <Application.Resources>
+
+        <ImageBrush x:Key="FondCase1" ImageSource="pack://application:,,,/Bestiaire Witcher;component/img/Assets/pesta.jpg"/>
+        <ImageBrush x:Key="FondCase2" ImageSource="pack://application:,,,/Bestiaire Witcher;component/img/Assets/fiellon.jpg"/>
+        <ImageBrush x:Key="FondCase3" ImageSource="pack://application:,,,/Bestiaire Witcher;component/img/Assets/leshen.jpg"/>
+        <ImageBrush x:Key="FondCreation" ImageSource="pack://application:,,,/Bestiaire Witcher;component/img/Assets/wall.jpg"/>
+        
+        <!-- Styles pour les bouttons -->
+
+        <Style TargetType="{x:Type Button}" x:Key="styleBouttonDeBase">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Background" Value="#FFFFFF"/>
+        </Style>
+
+        <Style TargetType="{x:Type Button}" x:Key="stylePourBoutonsMenu" BasedOn="{StaticResource styleBouttonDeBase}">
+            <Setter Property="Width" Value="80"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Margin" Value="10,0"/>
+        </Style>
+
+        <Style TargetType="{x:Type Button}" x:Key="stylePourBoutonsRace" BasedOn="{StaticResource styleBouttonDeBase}">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+        </Style>
+
+        <Style TargetType="{x:Type Button}" x:Key="StyleBouttonLogin" BasedOn="{StaticResource stylePourBoutonsMenu}">
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Content" Value="Se Connecter"/>
+        </Style>
+
+        <Style TargetType="{x:Type Button}" x:Key="stylePourBouttonDelete" BasedOn="{StaticResource stylePourBoutonsMenu}">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Visibility" Value="Collapsed"/>
+        </Style>
+
+        <!-- Style pour l'icône -->
+
+        <Style TargetType="{x:Type Image}" x:Key="styleIcon">
+            <Setter Property="Grid.Row" Value="0"/>
+            <Setter Property="Source" Value="pack://application:,,,/Bestiaire Witcher;component/img/Assets/icon.png"/>
+        </Style>
+
+        <!-- Style pour le login -->
+
+        <Style TargetType="{x:Type StackPanel}" x:Key="styleStackPanelLogin">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="{x:Type TextBox}" x:Key="styleTextboxLogin">
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Margin" Value="10,0,0,20"/>
+            <Setter Property="MinWidth" Value="150"/>
+        </Style>
+
+        <Style TargetType="{x:Type TextBlock}" x:Key="stylePourTextboxLoginError">
+            <Setter Property="Visibility" Value="Collapsed"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="Background" Value="DarkRed"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Text" Value="Login ou mot de passe incorrect"/>
+        </Style>
+
+        <!-- Styles pour la listview -->
+        <!-- Style pour listview -->
+        <Style TargetType="{x:Type ListView}" x:Key="styleListView">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <!-- Style pour container d'item de listview -->
+        <Style TargetType="{x:Type ListViewItem}" x:Key="styleItemContainerListView">
+            <Setter Property="BorderThickness" Value="5"/>
+        </Style>
+        <!-- Style pour item de listview -->
+        <Style TargetType="{x:Type ListItem}" x:Key="styleItemListView">
+            <Setter Property="Foreground" Value="DarkSalmon"/>
+        </Style>
+
+        <Style TargetType="{x:Type ListView}" x:Key="styleListViewCollapsed" BasedOn="{StaticResource styleListView}">
+            <Setter Property="Visibility" Value="Collapsed"/>
+        </Style>
+
+
+        <!-- Style pour footer -->
+        <Style TargetType="{x:Type TextBlock}" x:Key="stylePourTextBlockFooter">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+        <Style TargetType="{x:Type TextBox}" x:Key="stylePourTextBoxFooter">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="5,0,0,0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+        </Style>
+
+        <Style TargetType="{x:Type TextBlock}" x:Key="styleMsg">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="Background" Value="#7F000000"/>
+            <Setter Property="Padding" Value="0,15,0,0"/>
+            <Setter Property="Margin" Value="0,20,0,0"/>
+        </Style>
+        
+        <!-- Style pour affichage -->
+        <Style TargetType="{x:Type Grid}" x:Key="styleAffichage">
+            <Setter Property="Background" Value="Transparent"/>
+            <!--<Setter Property="Visibility" Value="Collapsed"/>-->
+        </Style>
+
+        <Style TargetType="{x:Type Image}" x:Key="styleProfile">
+            <Setter Property="Margin" Value="5,5,5,5"/>
+           <!-- <Setter Property="Source" Value="pack://application:,,,/Bestiaire Witcher;component/img/Assets/not_found.png"/> -->
+        </Style>
+
+        <Style TargetType="{x:Type TextBlock}" x:Key="styleTextBlockDescr">
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,5,0,2.5"/>
+            <Setter Property="Background" Value="#7F000000"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+
+        <Style TargetType="{x:Type TextBlock}" x:Key="styleTextBlockDescr2" BasedOn="{StaticResource styleTextBlockDescr}">
+            <Setter Property="Margin" Value="0,2.5,0,5"/>
+        </Style>
+
+        <Style TargetType="{x:Type TextBox}" x:Key="styleTextBoxDescr">
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,5,0,2.5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="#7F000000"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+        </Style>
+
+        <Style TargetType="{x:Type TextBox}" x:Key="styleTextBoxDescr2" BasedOn="{StaticResource styleTextBoxDescr}">
+            <Setter Property="Margin" Value="0,2.5,0,5"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+        </Style>
+
+
+        <Style TargetType="{x:Type TextBox}" x:Key="styleTextBoxCreation" BasedOn="{StaticResource styleTextBoxDescr}">
+            <Setter Property="IsReadOnly" Value="False"/>
+        </Style>
+
+        <!-- style Description -->
+        <Style TargetType="{x:Type TextBlock}" x:Key="styleDescription">
+            <Setter Property="Margin" Value="0,0,0,2.5"/>
+            <Setter Property="Background" Value="#7F000000"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Padding" Value="5,5,5,5"/>
+        </Style> 
+
+        <!-- style ImgFaiblesse     -->
+        <Style TargetType="{x:Type StackPanel}" x:Key="styleImgFaiblesse">
+            <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="Margin" Value="0,2.5,0,2.5"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="Background" Value="#7F000000"/>
+        </Style>
+        
+        <!-- style Creation -->
+
+
+    </Application.Resources>
+</Application>

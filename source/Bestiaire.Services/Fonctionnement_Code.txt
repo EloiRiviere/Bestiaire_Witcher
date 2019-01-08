@@ -1,0 +1,56 @@
+﻿Code UCContent:
+
+UCContent contient:
+
+Un dictionnaire "CreaturesByRaceCollection" qui contient en clef les enums des différentes races et en valeur une liste des enums des noms des monstres
+Une ObservableCollection "EnumCreaturesList" qui contient les enums de tous les noms monstres
+Une liste "AllMonstres" qui contient tous les monstres
+Un dictionnaire "MonstresCrees" qui contient en clef des string de race et en valeur une liste de monstre de cette race
+
+
+Un attibut privé myMainWindow de type MainWindow qui contient la référence de la MainWindow
+Un attribut public MainWindow qui gère myMainWindow, qui met aussi à jour le compteur de créatures
+
+
+
+La ListView "Race"
+					- Bind ses items dans les clefs de CreatureByRaceCollection
+					- Met son item sélectionné dans SelectedRace
+					- Appelle ListViewRace_SelectionChanged à chaque fois qu'il y a changement de sélaction
+
+ListViewRace_SelectionChanged met a jour la valeur de selectedRace en lui donnant le nouvel élément sélectionné
+selectedRace de type RaceEnum	
+					- Contient la race sélectionnée dans la ListView "Race"
+					- Vide, puis recrée EnumCreaturesList pour lui redonner les emums correspondant à la selectedRace
+					- gère la visibilité
+					- Met à jour le compteur de créatures
+					- Met à jour les items de ListViewCreature
+
+
+La ListView "ListViewCreature"
+					- bind ses items sur EnumCreatureList
+					- item sélectionné stocké dans SelectedCreature (Enum)
+
+SelectedCreature met dans SelectedMonstre (Monstre) le monstre récupéré dans AllMonstres qui correspont à l'enum SelectedCreature
+
+SelectedMonstre ?????????????
+
+
+
+
+
+La ListView "RaceMiens"
+					- bind ses items sur MonstresCrees.Keys
+					- donne son item selectionné à SelectedRaceMien (string)
+					- appelle ListViewRaceMiens_SelectionChanged
+
+ListViewRaceMiens_SelectionChanged donne l'item selectionné à SelectedRaceMien ??????????
+
+SelectedRaceMien (String)
+					- vide puis recrée le dictionnaire MonstresCrees
+					- gère les visibility
+					- maj compteurCreature
+					- donne a ListViewCreatureMiens la liste des monstres de la selectedRaceMiens
+
+
+

@@ -1,0 +1,130 @@
+﻿<UserControl x:Class="Bestiaire_Witcher.UCContent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:my="clr-namespace:Bestiaire_Witcher"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <my:EnumDescriptionConverter x:Key="EnumConverter"/>
+        <my:MonstreToVisibilityConverter x:Key="VisibilityConverter"/>
+    </UserControl.Resources>
+
+    <DockPanel>
+        
+        <!-- Header -->
+        <DockPanel DockPanel.Dock="Top" Name="Menu" Height="50">
+            <Button Name="Monstres" Content="Monstres" DockPanel.Dock="Left"  Style="{StaticResource stylePourBoutonsMenu}" Click="Monstres_Click"></Button>
+            <Button Name="Creation" Content="Création" DockPanel.Dock="Left" Style="{StaticResource stylePourBoutonsMenu}" Click="Creation_Click" Visibility="Collapsed"/>
+            <Button Name="MesMonstres" Content="Mes Monstres" DockPanel.Dock="Left" Style="{StaticResource stylePourBoutonsMenu}" Click="MesMonstres_Click" Visibility="Collapsed"/>
+            <Button Name="Login" Content="Login" DockPanel.Dock="Right" HorizontalAlignment="Right" Style="{StaticResource stylePourBoutonsMenu}" Click="Login_Click"></Button>
+            <Button Name="Disconnect" Content="Se Déconnecter" DockPanel.Dock="Right" HorizontalAlignment="Right" Width="120" Style="{StaticResource stylePourBoutonsMenu}" Click="Disconnect_Click" Visibility="Collapsed"/>
+        </DockPanel>
+
+        <!-- Corps -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.33*"/>
+                <ColumnDefinition Width="0.33*"/>
+                <ColumnDefinition Width="0.33*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- ListView de la race -->
+            <ListView Grid.Column="0" Name="Race"
+                          Background="{StaticResource FondCase1}"
+                          ItemsSource="{Binding CreaturesByRaceCollection.Keys}" 
+                          Style="{StaticResource styleListView}"
+                          ItemContainerStyle="{StaticResource styleItemContainerListView}"
+                          SelectedItem="{Binding SelectedRace}"
+                          SelectionChanged="ListViewRace_SelectionChanged">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding .,Converter={StaticResource ResourceKey=EnumConverter}}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <!-- ListView de la race pour les monstres créés -->
+            <ListView Grid.Column="0" Name="RaceMiens" Visibility="Collapsed"
+                          Background="{StaticResource FondCase1}"
+                          ItemsSource="{Binding StringRacesMiensList}" 
+                          Style="{StaticResource styleListView}"
+                          ItemContainerStyle="{StaticResource styleItemContainerListView}"
+                          SelectedItem="{Binding SelectedRaceMiens}"
+                          SelectionChanged="ListViewRaceMiens_SelectionChanged">
+            </ListView>
+
+                <!-- 2eme partie, Monstres -->
+                <StackPanel Grid.Column="1" Name="Créature" Background="{StaticResource FondCase2}">
+                    
+                <!-- Message si aucune race n'est sélectionnée -->
+                <TextBlock Name="Msg1" Style="{StaticResource styleMsg}" Text="Choisissez une Race"/>
+                    
+                <!-- ListView pour les monstres -->
+                <ListView
+                        Name="ListViewCreature"
+                        ItemsSource="{Binding EnumCreaturesList}" 
+                        Style="{StaticResource styleListViewCollapsed}"
+                        ItemContainerStyle="{StaticResource styleItemContainerListView}"
+                        SelectedItem="{Binding SelectedCreature}"
+                        Height="{Binding ElementName=Créature, Path=ActualHeight}"
+                       >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding .,Converter={StaticResource ResourceKey=EnumConverter}}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <!-- ListView pour les monstres créés -->
+                <ListView
+                        Name="ListViewCreatureMiens"
+                        ItemsSource="{Binding MonstresCrees[selectedRaceMiens]}" 
+                        Style="{StaticResource styleListViewCollapsed}"
+                        ItemContainerStyle="{StaticResource styleItemContainerListView}"
+                        SelectedItem="{Binding SelectedCreatureMienne}"
+                        Height="{Binding ElementName=Créature, Path=ActualHeight}"
+                />
+            </StackPanel>
+
+            <!-- 3eme partie, Description-->
+            <StackPanel Grid.Column="2" Name="Détail" Background="{StaticResource FondCase3}">
+                <TextBlock Name="Msg2" Style="{StaticResource styleMsg}" Text="Choisissez une Créature" Visibility="{Binding SelectedMonstre, Converter={StaticResource VisibilityConverter}, ConverterParameter=Message}"/>
+                <Grid Name="AffichageCreature" Style="{StaticResource styleAffichage}" Visibility="{Binding SelectedMonstre, Converter={StaticResource VisibilityConverter}, ConverterParameter=Affichage}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image Name="profile" Grid.Column="0" Grid.RowSpan="2" Style="{StaticResource styleProfile}" Source="{Binding SelectedMonstre.Image}" Height="150"/>
+                    <TextBlock Grid.Column="1" Grid.Row="0" Text="Nom:" Style="{StaticResource styleTextBlockDescr}"/>
+                    <TextBox Name="name" Grid.Column="2" Grid.Row="0" Style="{StaticResource styleTextBoxDescr}" Text="{Binding SelectedMonstre.Nom}"/>
+                    <TextBlock Grid.Column="1" Grid.Row="1" Text="Race:" Style="{StaticResource styleTextBlockDescr2}"/>
+                    <TextBox Name="race" Grid.Column="2" Grid.Row="1" Style="{StaticResource styleTextBoxDescr2}" Text="{Binding SelectedMonstre.Race}"/>
+
+                    <Grid Grid.ColumnSpan="3" Grid.Row="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" Height="200">
+                            <TextBlock Name="Description" Grid.Row="0" Style="{StaticResource styleDescription}" Text="{Binding SelectedMonstre.Description}" MinHeight="100"/>
+                        </ScrollViewer>
+
+                        <Button Grid.Row="1" Name="Delete" DockPanel.Dock="Bottom" Style="{StaticResource stylePourBouttonDelete}" Content="Supprimer" Click="Delete_Click"/>
+                        <StackPanel Grid.Row="2" Name="ImgFaiblesses" Style="{StaticResource styleImgFaiblesse}" Height="50"/>
+                    </Grid>
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </DockPanel>
+</UserControl>

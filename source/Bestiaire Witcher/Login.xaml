@@ -1,0 +1,33 @@
+﻿<Window x:Class="Bestiaire_Witcher.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bestiaire_Witcher"
+        mc:Ignorable="d"
+        Icon="pack://application:,,,/Bestiaire Witcher;component/img/Assets/icon.ico"
+        Title="Login" Height="300" Width="300" Background="#373E3F">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <Image Style="{StaticResource styleIcon}"/>
+
+        <TextBlock Name="Error" Style="{StaticResource stylePourTextboxLoginError}"/>
+
+        <StackPanel Grid.Row="1" Style="{StaticResource styleStackPanelLogin}">
+            <TextBlock>Identifiant:</TextBlock>
+            <TextBox Name="Id" Style="{StaticResource styleTextboxLogin}"  Text="Entrez votre identifiant"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Style="{StaticResource styleStackPanelLogin}">
+            <TextBlock>Mot de passe:</TextBlock>
+            <TextBox Name="Passwd" Style="{StaticResource styleTextboxLogin}">Entrez ici votre mot de passe</TextBox>
+        </StackPanel>
+        
+        <Button Grid.Row="3" Style="{StaticResource StyleBouttonLogin}" Click="SeConnecter_Click"/>
+    </Grid>
+</Window>

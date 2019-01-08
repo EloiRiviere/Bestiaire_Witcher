@@ -1,0 +1,7 @@
+﻿################################################################################
+# Ce fichier .gitignore a été automatiquement créé par Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/Bestiaire Witcher/v15
+/Bestiaire Witcher/bin/Debug
+/Bestiaire Witcher/obj/Debug

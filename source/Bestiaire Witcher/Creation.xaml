@@ -1,0 +1,40 @@
+﻿<Window x:Class="Bestiaire_Witcher.Creation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bestiaire_Witcher"
+        mc:Ignorable="d"
+        Title="Creation" Height="300" Width="300" Background="{StaticResource FondCase3}">
+    <DockPanel>
+        
+        <!-- Message d'erreur, n'est visible que si on essaye de créer un monstre identique à un onstre déjà existant -->
+        <TextBlock Name="Error" DockPanel.Dock="Top" Text="Ce monstre existe déjà" Style="{StaticResource stylePourTextboxLoginError}"/>
+        
+        <!-- Corps de la page -->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+
+            <!-- Image à ajouter -->
+            
+            <!-- Contient la race du monstre créé -->
+            <TextBox Name="Race" Grid.Row="0" Style="{StaticResource styleTextBoxCreation}" Text="Race"/>
+            
+            <!-- Contient ne nom du monstre créé -->
+            <TextBox Name="Nom" Grid.Row="1" Style="{StaticResource styleTextBoxCreation}" Text="Nom"/>
+            
+            <!-- Contient la description du monstre créé -->
+            <TextBox Name="Description" Grid.Row="2" Style="{StaticResource styleTextBoxCreation}" Text="Description"/>
+            
+            <!-- Faiblesses à ajouter -->
+            <Button Name="Creer" Grid.Row="4" Style="{StaticResource StyleBouttonLogin}" Content="Créer" Click="Creer_Click"/>
+
+        </Grid>
+    </DockPanel>
+</Window>

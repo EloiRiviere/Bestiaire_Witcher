@@ -1,0 +1,16 @@
+﻿<Window x:Class="Bestiaire_Witcher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:my="clr-namespace:Bestiaire_Witcher"
+        mc:Ignorable="d"
+        Icon="pack://application:,,,/Bestiaire Witcher;component/img/Assets/icon.ico"
+        Title="Bestiaire" Height="515" Width="800" Background="#373E3F" MinHeight="515" MinWidth="800">
+
+    <!-- Contenu de la fenêtre principale -->
+    <DockPanel LastChildFill="True">
+        <my:UCFooter DockPanel.Dock="Bottom" x:Name="UCFooter"/>
+        <my:UCContent x:Name="UCContent"/>
+    </DockPanel>
+</Window>

@@ -1,0 +1,87 @@
+    <DockPanel LastChildFill="True">
+        <DockPanel DockPanel.Dock="Top" Name="Menu" Height="50">
+            <Button Name="Monstres" Content="Monstres" DockPanel.Dock="Left"  Style="{StaticResource stylePourBoutonsMenu}" Click="Monstres_Click"></Button>
+            <Button Name="Login" Content="Login" DockPanel.Dock="Right" HorizontalAlignment="Right" Style="{StaticResource stylePourBoutonsMenu}" Click="Login_Click"></Button>
+        </DockPanel>
+
+        <StackPanel DockPanel.Dock="Bottom" Height="20" Orientation="Horizontal">
+            <TextBlock Style="{StaticResource stylePourTextboxFooter}">Race:</TextBlock>
+            <TextBox Name="CompteurRace" Style="{StaticResource stylePourTextBoxFooter}"></TextBox>
+            <TextBlock Style="{StaticResource stylePourTextboxFooter}" Margin="20,0,0,0">Créature:</TextBlock>
+            <TextBox Name="CompteurCreature" Style="{StaticResource stylePourTextBoxFooter}"></TextBox>
+        </StackPanel>
+        
+        
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.33*"/>
+                <ColumnDefinition Width="0.33*"/>
+                <ColumnDefinition Width="0.33*"/>
+            </Grid.ColumnDefinitions>
+
+            <ListView Grid.Column="0" Name="Race"
+                      Background="{StaticResource FondCase1}"
+                      ItemsSource="{Binding CreaturesByRaceCollection.Keys}" 
+                      Style="{StaticResource styleListView}"
+                      ItemContainerStyle="{StaticResource styleItemContainerListView}"
+                      SelectedItem="{Binding SelectedRace}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding .,Converter={StaticResource ResourceKey=EnumConverter}}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+            <StackPanel Grid.Column="1" Name="Créature" Background="{StaticResource FondCase2}">
+                <TextBlock Name="Msg1" Style="{StaticResource styleMsg}" Text="Choisissez une Race"/>
+                <ListView
+                    Name="ListViewCreature"
+                    ItemsSource="{Binding EnumCreaturesList}" 
+                    Style="{StaticResource styleListViewCollapsed}"
+                    ItemContainerStyle="{StaticResource styleItemContainerListView}"
+                    SelectedItem="{Binding SelectedCreature}"
+                    Height="{Binding ElementName=Créature, Path=ActualHeight}"
+                    SelectionChanged="ListView_SelectionChanged">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding .,Converter={StaticResource ResourceKey=EnumConverter}}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2" Name="Détail" Background="{StaticResource FondCase3}">
+                <TextBlock Name="Msg2" Style="{StaticResource styleMsg}" Text="Choisissez une Créature" Visibility="{Binding SelectedMonstre, Converter={StaticResource VisibilityConverter}, ConverterParameter=Message}"/>
+                <Grid Name="AffichageCreature" Style="{StaticResource styleAffichage}" Visibility="{Binding SelectedMonstre, Converter={StaticResource VisibilityConverter}, ConverterParameter=Affichage}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image Name="profile" Grid.Column="0" Grid.RowSpan="2" Style="{StaticResource styleProfile}" Source="{Binding SelectedMonstre.Image}"/>
+                    <TextBlock Grid.Column="1" Grid.Row="0" Text="Nom:" Style="{StaticResource styleTextBlockDescr}"/>
+                    <TextBox Name="name" Grid.Column="2" Grid.Row="0" Style="{StaticResource styleTextBoxDescr}" Text="{Binding SelectedMonstre.Nom}"/>
+                    <TextBlock Grid.Column="1" Grid.Row="1" Text="Race:" Style="{StaticResource styleTextBlockDescr2}"/>
+                    <TextBox Name="race" Grid.Column="2" Grid.Row="1" Style="{StaticResource styleTextBoxDescr2}" Text="{Binding SelectedMonstre.Race}"/>
+
+                    <TextBlock Name="Description" Grid.ColumnSpan="3" Grid.Row="2" Style="{StaticResource styleDescription}" Height="200" Text="{Binding SelectedMonstre.Description}"/>
+
+                    
+
+                    <StackPanel Name="ImgFaiblesses" Grid.ColumnSpan="3" Grid.Row="3" Style="{StaticResource styleImgFaiblesse}" Height="50"/>
+                    
+                </Grid>
+            </StackPanel>
+
+        </Grid>
+
+
+    </DockPanel>

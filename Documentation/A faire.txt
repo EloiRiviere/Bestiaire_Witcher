@@ -1,0 +1,33 @@
+DOC:
+
+Doc des diagrammes
+Diagramme de sequence
+
+CODE:
+
+Utiliser Abstraction, héritage, interfaces, polymorphisme
+Encapsulation
+Tests: Utiliser assertions au lieu de Debug.Write
+Evènements
+
+IHM:
+
+Description de contexte de l'app
+Diagramme de cas d'utilisation
+
+CODE:
+
+Notifier la vue depuis les évènements métier
+
+DOC:
+
+Modéliser la persistance
+Partie perso dans le diagramme de classes... ?
+Mettre en avant la persistance dans mon diagramme de paquetages
+Réaliser une video de 1 à 3 minutes pour faire la démo de l'app
+
+CODE:
+
+Coder une fonctionnalité personnelle
+Documenter le code
+Créer un installateur de mon app

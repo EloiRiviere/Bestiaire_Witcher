@@ -1,0 +1,8 @@
+GIT:
+
+git clone https://forge.clermont-universite.fr/git/tw3b
+
+git branch -v
+git log
+
+cd ~/OneDrive/IUT/2°\ 1°année/2\ 1A/Quatrième\ Période/C#/Bestiaire\ Witcher/.git
